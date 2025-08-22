@@ -7,7 +7,11 @@
 php artisan make:filament-page TasksKanban
 ```
 
-## 2. Implement the Kanban Interface
+## 2. Extend KanbanPage and Implement the Kanban Method
+
+**Important:** You must extend `KanbanPage` and provide the model and status field.
+
+**Note:** Don't set a `$view` property - `KanbanPage` has its own view built-in.
 
 ```php
 <?php
@@ -15,48 +19,23 @@ php artisan make:filament-page TasksKanban
 namespace App\Filament\Pages;
 
 use App\Models\Task;
-use Asmit\AdvancedKanban\Concerns\InteractsWithKanban;
+use Asmit\AdvancedKanban\Pages\KanbanPage;
 use Asmit\AdvancedKanban\Kanban;
-use Asmit\AdvancedKanban\Columns\KanbanColumn;
-use Filament\Pages\Page;
 
-class TasksKanban extends Page
+class TasksKanban extends KanbanPage  // ← Must extend KanbanPage
 {
-    use InteractsWithKanban;
-
-    protected static string $view = 'advanced-kanban::index';
+    protected static ?string $navigationIcon = 'heroicon-o-view-columns';
+    protected static ?string $navigationLabel = 'Tasks Kanban';
+    protected static ?int $navigationSort = 1;
 
     public function kanban(Kanban $kanban): Kanban
     {
         return $kanban
-            ->model(Task::class)
-            ->statusField('status')
-            ->titleField('title')
-            ->descriptionField('description')
+            ->model(Task::class)           // ← Pass your model
+            ->statusField('status')        // ← Pass the status field
             ->columns([
-                KanbanColumn::make('todo')
-                    ->label('To Do')
-                    ->color('gray')
-                    ->icon('heroicon-o-clock')
-                    ->allowedTransitions(['in-progress']),
-                
-                KanbanColumn::make('in-progress')
-                    ->label('In Progress')
-                    ->color('blue')
-                    ->icon('heroicon-o-play')
-                    ->allowedTransitions(['review', 'todo']),
-                
-                KanbanColumn::make('review')
-                    ->label('Review')
-                    ->color('yellow')
-                    ->icon('heroicon-o-eye')
-                    ->allowedTransitions(['done', 'in-progress']),
-                
-                KanbanColumn::make('done')
-                    ->label('Done')
-                    ->color('green')
-                    ->icon('heroicon-o-check-circle')
-                    ->allowedTransitions(['review']),
+                KanbanColumn::make('To Do'), // ← Pass required column
+                KanbanColumn::make('In Progress'),
             ])
             ->searchableFields(['title', 'description'])
             ->recordsPerColumn(10);
@@ -64,12 +43,12 @@ class TasksKanban extends Page
 }
 ```
 
-## 3. Add to Navigation
+## 3. That's It!
 
-In your panel provider or page configuration:
+Your kanban board is ready! The page will automatically appear in your Filament navigation and display your tasks organized by status columns.
 
-```php
-protected static ?string $navigationIcon = 'heroicon-o-view-columns';
-protected static ?string $navigationLabel = 'Tasks Kanban';
-protected static ?int $navigationSort = 1;
-```
+**Key Requirements:**
+- ✅ Extend `KanbanPage`
+- ✅ Pass `->model(YourModel::class)`
+- ✅ Pass `->statusField('your_status_field')`
+- ✅ Don't set `$view` - KanbanPage has its own view
