@@ -27,7 +27,9 @@ git pull origin main
 ```
 
 ## Install dependencies
+```
 npm install
+```
 
 ## Run development server
 ```
