@@ -2,12 +2,13 @@
 layout: doc
 title: Advanced Kanban
 description: A powerful and flexible premium Kanban board plugin for Filament 4.x
+
 ---
 
 # Advanced Kanban
 
 A powerful and flexible premium Kanban board plugin for Filament 4.x that provides an intuitive drag-and-drop interface for managing records across different status columns.
-
+## [Buy Now](https://checkout.anystack.sh/filament-advanced-kanban)
 ## Features
 
 - **Drag & Drop Interface**: Intuitive drag-and-drop functionality for moving records between columns
