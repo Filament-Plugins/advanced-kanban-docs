@@ -35,7 +35,7 @@ A powerful and flexible premium Kanban board plugin for Filament 4.x that provid
 ## Support
 
 - [Help & Support](/filament/advanced-kanban/help)
-- [Community Support](https://github.com/your-repo)
+- [Community Support](https://github.com/Filament-Plugins/advanced-kanban-docs)
 - [Premium Support](mailto:mail2asmitnepali@gmail.com)
 
 ## License

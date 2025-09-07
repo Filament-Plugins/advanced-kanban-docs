@@ -118,4 +118,4 @@ For enterprise customers with priority support:
 
 ## License
 
-Advanced Kanban is a premium plugin that requires a valid license for production use. See our [pricing page](#) for license options.
+Advanced Kanban is a premium plugin that requires a valid license for production use. See our [pricing page](https://checkout.anystack.sh/filament-advanced-kanban) for license options.
