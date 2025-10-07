@@ -36,7 +36,7 @@ public function kanban(Kanban $kanban): Kanban
 ### 1. Search & Filtering
 
 - **[Search](search.md)**: Real-time search across multiple fields
-- **[Filters](filters.md)**: Custom filter forms with various field types
+- **[Filters](filters/overview.md)**: Custom filter forms with various field types
 
 ### 2. Column Management
 

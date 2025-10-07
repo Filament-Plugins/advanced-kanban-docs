@@ -29,7 +29,7 @@ A powerful and flexible premium Kanban board plugin for Filament 4.x that provid
 - [Overview](/filament/advanced-kanban/kanban/overview)
 - [Advanced Features](/filament/advanced-kanban/kanban/advanced-features/components)
 - [Columns](/filament/advanced-kanban/kanban/columns/overview)
-- [Filters](/filament/advanced-kanban/kanban/filters)
+- [Filters](/filament/advanced-kanban/kanban/filters/overview)
 - [Search](/filament/advanced-kanban/kanban/search)
 
 ## Support
