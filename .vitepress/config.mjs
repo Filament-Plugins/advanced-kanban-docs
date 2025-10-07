@@ -31,7 +31,13 @@ export default defineConfig({
                 items: [
                     { text: 'Overview', link: '/filament/advanced-kanban/kanban/overview' },
                     { text: 'Search', link: '/filament/advanced-kanban/kanban/search' },
-                    { text: 'Filters', link: '/filament/advanced-kanban/kanban/filters' },
+                    {
+                        text: 'Filters',
+                        items: [
+                            { text: 'Overview', link: '/filament/advanced-kanban/kanban/filters/overview' },
+                            { text: 'Tab Filters', link: '/filament/advanced-kanban/kanban/filters/tab-filters' },
+                        ]
+                    },
                     {
                         text: 'Columns',
                         items: [

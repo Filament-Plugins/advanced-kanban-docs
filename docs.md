@@ -652,6 +652,79 @@ public function kanban(Kanban $kanban): Kanban
 }
 ```
 
+#### Tabs to Filter Kanban Records
+
+You can use Filament tabs to scope the Kanban board query, mirroring Filament's resource tabs behavior. Define tabs with `modifyQueryUsing(...)`, and the active tab will automatically filter the Kanban data.
+
+Resource/Relation Manager example:
+
+```php
+use Asmit\AdvancedKanban\Concerns\HasKanbanRelatedRecords;
+use Asmit\AdvancedKanban\Contracts\HasKanban;
+use Filament\Schemas\Components\Tabs\Tab;
+use Illuminate\Database\Eloquent\Builder;
+
+class ManageProjectTask extends ManageRelatedRecords implements HasKanban
+{
+    use HasKanbanRelatedRecords;
+
+    public function getTabs(): array
+    {
+        return [
+            'all' => Tab::make(),
+            'complete' => Tab::make()
+                ->modifyQueryUsing(fn (Builder $query) => $query->where('status', 'complete')),
+            'pending' => Tab::make()
+                ->modifyQueryUsing(fn (Builder $query) => $query->where('status', 'pending')),
+        ];
+    }
+
+    public function kanban(Kanban $kanban): Kanban
+    {
+        return $kanban
+            ->model(Task::class)
+            ->statusField('status')
+            // ... other Kanban config
+        ;
+    }
+}
+```
+
+Standalone Kanban page example:
+
+```php
+use Asmit\AdvancedKanban\Pages\KanbanPage;
+use Filament\Resources\Concerns\HasTabs;
+use Filament\Schemas\Components\Tabs\Tab;
+use Illuminate\Database\Eloquent\Builder;
+
+class TaskKanban extends KanbanPage
+{
+    use HasTabs;
+
+    public function getTabs(): array
+    {
+        return [
+            'All' => Tab::make('All'),
+            'High Priority' => Tab::make('High Priority')
+                ->modifyQueryUsing(fn (Builder $query) => $query->where('priority', 'high')),
+        ];
+    }
+
+    public function kanban(Kanban $kanban): Kanban
+    {
+        return $kanban
+            ->model(Task::class)
+            ->statusField('status')
+            // ... other Kanban config
+        ;
+    }
+}
+```
+
+Notes:
+- The active tab is initialized on first load and switching tabs reloads Kanban records.
+- No extra wiring is needed—Advanced Kanban automatically applies the active tab's query to the Kanban data source.
 ---
 
 ## Actions

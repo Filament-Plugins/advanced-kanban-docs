@@ -4,7 +4,7 @@ Currently, this feature is only available for MRR pages.
 ## 1. Create an MRR Page
 
 ```bash
-php artisan make:filament-page UserTasks --resource=UserResource --relationship=tasks
+php artisan make:filament-page ManageUserTasks --resource=UserResource --type=ManageRelatedRecords
 ```
 
 ## 2. Implement HasKanban Interface

@@ -148,21 +148,7 @@ Sets custom logic for applying filters to the query.
 ```
 
 ## 6. Action Configuration Methods
-
-### 6.1 `headerActions(array $actions)`
-
-Sets actions that appear in the kanban header. Uses Filament actions.
-
-```php
-->headerActions([
-    Actions\CreateAction::make()
-        ->label('New Task'),
-    Actions\Action::make('export')
-        ->label('Export'),
-])
-```
-
-### 6.2 `recordActions(array $actions)`
+### 6.1 `recordActions(array $actions)`
 
 Sets actions that appear on individual kanban cards.
 
@@ -177,7 +163,7 @@ use Asmit\AdvancedKanban\RecordAction\Action;
 ])
 ```
 
-### 6.3 `columnHeaderActions(array $actions)`
+### 6.2 `columnHeaderActions(array $actions)`
 
 Sets actions that appear in each column header.
 
