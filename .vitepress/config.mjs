@@ -57,6 +57,7 @@ export default defineConfig({
                     { text: 'Handle Record Move', link: '/filament/advanced-kanban/kanban/advanced-features/handle-record-move' },
                     { text: 'Render Hooks', link: '/filament/advanced-kanban/kanban/advanced-features/render-hooks' },
                     { text: 'Query Modifications', link: '/filament/advanced-kanban/kanban/advanced-features/query-modifications' },
+                    { text: 'Custom Actions', link: '/filament/advanced-kanban/kanban/advanced-features/actions-to-component' },
                 ]
             },
             {
