@@ -435,7 +435,9 @@ KanbanColumn::make('todo')
 ```php
 KanbanColumn::make('todo')
     ->label('To Do')
-    ->icon('heroicon-o-clipboard-list'); // Use any Heroicon name
+    -->icon(Heroicon::OutlinedRectangleStack)
+    ->iconColor(Color::Red[500])
+    ->iconSize(IconSize::Medium); // Use any Heroicon name
 ```
 
 #### Extra Column Header Classes
@@ -514,7 +516,7 @@ public function kanban(Kanban $kanban): Kanban
 KanbanColumn::make('completed')
     ->label('Completed')
     ->lockCardUsing(fn($record) => true)
-    ->lockIcon('heroicon-o-lock-closed') // Use any Heroicon name
+    ->lockedIcon('heroicon-o-lock-closed') // Use any Heroicon name
     ->lockLabel('Completed - Cannot be moved'); // Custom label for the lock icon
 ```
 
