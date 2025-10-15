@@ -2,6 +2,7 @@
 
 A comprehensive guide to the Advanced Kanban plugin for Filament 4.x
 
+<iframe width="560" height="315" src="https://www.youtube.com/embed/lqVxcOwHQAA" title="Demo" frameborder="0" allowfullscreen></iframe>
 ## Table of Contents
 
 1. [Introduction](#introduction)
@@ -307,31 +308,6 @@ public function kanban(Kanban $kanban): Kanban
         ]);
 }
 ```
-
-### Common Configuration Options
-
-```php
-public function kanban(Kanban $kanban): Kanban
-{
-    return $kanban
-        ->model(Task::class)
-        ->statusField('status')
-        ->titleField('title')                    // Field to display as card title
-        ->descriptionField('description')        // Field to display as card description
-        ->searchableFields(['title', 'description']) // Fields to search
-        ->recordsPerColumn(10)                   // Pagination limit
-        ->columns([
-            // Your columns here
-        ])
-        ->columnHeaderActions([                  // Column-specific actions
-            // Actions here
-        ])
-        ->recordActions([                        // Card-specific actions
-            // Actions here
-        ]);
-}
-```
-
 ---
 
 ## Configuration
@@ -380,19 +356,6 @@ use Asmit\AdvancedKanban\Columns\KanbanColumn;
         ->color('green'),
 ])
 ```
-
-#### Advanced Column Configuration
-```php
-KanbanColumn::make('todo')
-    ->label('To Do')
-    ->color('gray')
-    ->icon('heroicon-o-clock')
-    ->description('Tasks that need to be started')
-    ->allowedTransitions(['in_progress'])        // Control allowed moves
-    ->lockCardUsing(fn($record) => false)        // Lock specific cards
-    ->extraColumnHeadingClass('font-bold');      // Custom CSS classes
-```
-
 ---
 
 ## Columns
@@ -613,52 +576,11 @@ public function kanban(Kanban $kanban): Kanban
 }
 ```
 
-#### Advanced Filter Example
-```php
-<?php
-use Filament\Forms\Components\DatePicker;
-use Filament\Forms\Components\Toggle;
-
-public function kanban(Kanban $kanban): Kanban
-{
-    return $kanban
-        ->model(Task::class)
-        ->statusField('status')
-        ->filterFormSchema([
-            Select::make('priority')
-                ->options([
-                    'low' => 'Low',
-                    'medium' => 'Medium',
-                    'high' => 'High',
-                ]),
-            DatePicker::make('due_date')
-                ->label('Due Date'),
-            Toggle::make('is_urgent')
-                ->label('Urgent Tasks Only'),
-        ])
-        ->applyFiltersUsing(function(Builder $query, array $data) {
-            if (!empty($data['priority'])) {
-                $query->where('priority', $data['priority']);
-            }
-            
-            if (!empty($data['due_date'])) {
-                $query->whereDate('due_date', $data['due_date']);
-            }
-            
-            if (!empty($data['is_urgent'])) {
-                $query->where('is_urgent', true);
-            }
-            
-            return $query;
-        });
-}
-```
-
 #### Tabs to Filter Kanban Records
 
 You can use Filament tabs to scope the Kanban board query, mirroring Filament's resource tabs behavior. Define tabs with `modifyQueryUsing(...)`, and the active tab will automatically filter the Kanban data.
 
-Resource/Relation Manager example:
+**Resource/Relation Manager example:**
 
 ```php
 use Asmit\AdvancedKanban\Concerns\HasKanbanRelatedRecords;
@@ -692,7 +614,7 @@ class ManageProjectTask extends ManageRelatedRecords implements HasKanban
 }
 ```
 
-Standalone Kanban page example:
+**Standalone Kanban page example:**
 
 ```php
 use Asmit\AdvancedKanban\Pages\KanbanPage;
