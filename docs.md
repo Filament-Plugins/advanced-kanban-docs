@@ -2,7 +2,8 @@
 
 A comprehensive guide to the Advanced Kanban plugin for Filament 4.x
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/lqVxcOwHQAA" title="Demo" frameborder="0" allowfullscreen></iframe>
+## Demo Video
+[![Watch Demo](https://raw.githubusercontent.com/AsmitNepali/filamentphp.com/847e3b7e610fc3a625271bd9fe764698b30d1263/public/images/content/plugins/images/asmit-nepali-advanced-kanban.webp)](https://www.youtube.com/watch?v=lqVxcOwHQAA)
 ## Table of Contents
 
 1. [Introduction](#introduction)
