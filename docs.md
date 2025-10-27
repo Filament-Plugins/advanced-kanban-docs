@@ -1008,7 +1008,7 @@ To manage related records in a kanban board, use the MRR (Manage Related Records
 #### 1. Create an MRR Page
 ```bash
 php artisan make:filament-page ManageUserTasks --resource=UserResource --type=ManageRelatedRecords```
-
+```
 #### 2. Implement HasKanban Interface
 ```php
 <?php
