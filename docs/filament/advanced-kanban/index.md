@@ -8,10 +8,14 @@ description: A powerful and flexible premium Kanban board plugin for Filament 4.
 # Advanced Kanban
 
 A powerful and flexible premium Kanban board plugin for Filament 4.x that provides an intuitive drag-and-drop interface for managing records across different status columns.
+
+## [Try Demo](https://kanban-demo.laravelplugins.com/admin/kanban-task)
+
 ## Demo Video
 <iframe width="560" height="315" src="https://www.youtube.com/embed/lqVxcOwHQAA?si=JD1Zezx-kR6sSj0f" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-## [Try Demo](https://kanban-demo.laravelplugins.com/admin/kanban-task)
+
 ## [Buy Now](https://checkout.anystack.sh/filament-advanced-kanban)
+
 ## Features
 
 - **Drag & Drop Interface**: Intuitive drag-and-drop functionality for moving records between columns
