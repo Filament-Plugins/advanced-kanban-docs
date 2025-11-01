@@ -540,7 +540,10 @@ public function kanban(Kanban $kanban): Kanban
 ### Filters
 
 Advanced Kanban does not provide built-in filters like other Filament resources. However, you can implement custom filtering logic in your kanban page.
-
+#### Filter Indicators
+```php
+->enableFilterIndicator()
+```
 #### Basic Filter Example
 ```php
 <?php
@@ -661,11 +664,46 @@ Notes:
 
 ### Record Actions
 
+#### Create Action
+```php
+use Asmit\AdvancedKanban\RecordAction\EditAction;
+
+EditAction::make('edit')
+   ->model(Task::class)
+   ->schema([
+       // Component schema here
+    ])
+```
+
+**Edit Action**
+```php
+use Asmit\AdvancedKanban\RecordAction\EditAction;
+
+EditAction::make('edit')
+   ->model(Task::class)
+   ->schema([
+       // Component schema here
+    ])
+```
+
+**Delete Action**
+```php
+use Asmit\AdvancedKanban\RecordAction\DeleteAction;
+
+DeleteAction::make('delete')
+   ->icon(Heroicon::OutlinedTrash)
+   ->requiresConfirmation()
+   ->color('danger')
+```
+
+
+
 Add actions to each record using the `->recordActions()` method:
 
 ```php
 <?php
 use Asmit\AdvancedKanban\Kanban;
+use Asmit\AdvancedKanban\RecordAction\EditAction;
 use Asmit\AdvancedKanban\RecordAction\Action;
 use Asmit\AdvancedKanban\RecordAction\DeleteAction;
 
@@ -675,10 +713,18 @@ public function kanban(Kanban $kanban): Kanban
         ->model(Task::class)
         ->statusField('status')
         ->recordActions([
-            Action::make('edit')
-                ->label('Edit')
-                ->icon('heroicon-o-pencil')
-                ->action(fn($record) => $this->editTask($record)),
+           EditAction::make('edit')
+               ->model(Task::class)
+               ->schema([
+                   // Component schema here
+                ]),
+                
+            DeleteAction::make('delete')
+               ->icon(Heroicon::Out
+               linedTrash)
+               ->requiresConfirmation()
+               ->color('danger'),
+               
             Action::make('view')
                 ->label('View')
                 ->icon('heroicon-o-eye')
@@ -733,6 +779,19 @@ public function kanban(Kanban $kanban): Kanban
 ```
 
 ### Column Header Actions
+
+**Create Action**
+```php
+use Asmit\AdvancedKanban\Actions\CreateAction;
+
+CreateAction::make()
+    ->model(Task::class)
+    ->schema(function(array $arguments): array {
+        return $this->taskForm($arguments['status']);
+    })
+    ->icon(Heroicon::OutlinedPlus)
+    ->link()
+```
 
 Add actions to column headers using the `->columnHeaderActions()` method:
 
@@ -967,24 +1026,25 @@ public function addDocsAction(): Action
 
 ### Kanban Class Methods
 
-| Method | Description | Parameters |
-|--------|-------------|------------|
-| `model()` | Set the Eloquent model for the kanban board | `string\|Model $model` |
+| Method | Description                                                | Parameters |
+|--------|------------------------------------------------------------|------------|
+| `model()` | Set the Eloquent model for the kanban board                | `string\|Model $model` |
 | `statusField()` | Set the status field name that determines column placement | `string $field` |
-| `titleField()` | Set the title field name to display on cards | `string $field` |
-| `descriptionField()` | Set the description field name to display on cards | `string $field` |
-| `columns()` | Set the kanban columns configuration | `array\|Closure $columns` |
-| `searchableFields()` | Set fields that can be searched | `bool\|Closure $fields` |
-| `enableLoadingIndicator()` | Enable or disable loading indicator | `Closure\|bool $condition = true` |
-| `filterFormSchema()` | Set the filter form schema | `array\|Closure $schema` |
-| `recordActions()` | Set actions available on individual records | `array\|Closure $actions` |
-| `columnHeaderActions()` | Set actions available in column headers | `array\|Closure $actions` |
-| `recordsPerColumn()` | Set maximum number of records per column | `int $count` |
-| `modifyQueryUsing()` | Modify the base query for fetching records | `Closure $callback` |
-| `modifyRecordQueryUsing()` | Modify query for specific column records | `Closure $callback` |
-| `applyFiltersUsing()` | Set custom filter application logic | `Closure $callback` |
-| `applySearchUsing()` | Set custom search application logic | `Closure $callback` |
-| `emptyStateMessage()` | Set custom empty state message | `string $title`, `string $description` |
+| `titleField()` | Set the title field name to display on cards               | `string $field` |
+| `descriptionField()` | Set the description field name to display on cards         | `string $field` |
+| `columns()` | Set the kanban columns configuration                       | `array\|Closure $columns` |
+| `searchableFields()` | Set fields that can be searched                            | `bool\|Closure $fields` |
+| `enableLoadingIndicator()` | Enable or disable loading indicator                        | `Closure\|bool $condition = true` |
+| `enableFilterIndicator()` | Enable or disable filter indicator                         | `Closure\|bool $condition = true` |
+| `filterFormSchema()` | Set the filter form schema                                 | `array\|Closure $schema` |
+| `recordActions()` | Set actions available on individual records                | `array\|Closure $actions` |
+| `columnHeaderActions()` | Set actions available in column headers                    | `array\|Closure $actions` |
+| `recordsPerColumn()` | Set maximum number of records per column                   | `int $count` |
+| `modifyQueryUsing()` | Modify the base query for fetching records                 | `Closure $callback` |
+| `modifyRecordQueryUsing()` | Modify query for specific column records                   | `Closure $callback` |
+| `applyFiltersUsing()` | Set custom filter application logic                        | `Closure $callback` |
+| `applySearchUsing()` | Set custom search application logic                        | `Closure $callback` |
+| `emptyStateMessage()` | Set custom empty state message                             | `string $title`, `string $description` |
 
 ### KanbanColumn Methods
 
