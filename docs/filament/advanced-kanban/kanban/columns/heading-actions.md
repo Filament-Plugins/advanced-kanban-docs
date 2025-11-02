@@ -73,7 +73,21 @@ The action callback receives an `$arguments` array containing:
 
 - `status` - The current column's status value
 - Any additional data you pass to the action
+## Built-in Actions
 
+Advanced Kanban provides specialized actions for common operations:
+
+### CreateAction
+A pre-configured create action:
+
+```php
+use Asmit\AdvancedKanban\RecordAction\CreateAction;
+
+CreateAction::make('create')
+    ->schema([
+        // Your form schema here
+    ])
+```
 ## Best Practices
 
 - Use column header actions for operations specific to that column

@@ -80,6 +80,18 @@ public function kanban(Kanban $kanban): Kanban
 
 Advanced Kanban provides specialized actions for common operations:
 
+### EditAction
+A pre-configured edit action:
+
+```php
+use Asmit\AdvancedKanban\RecordAction\EditAction;
+
+EditAction::make('edit')
+    ->schema([
+        // Your form schema here
+    ]),
+```
+
 ### DeleteAction
 
 A pre-configured delete action with confirmation:

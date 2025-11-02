@@ -8,6 +8,7 @@ To add filters to your kanban board:
 
 1. **Create Filter Form Schema**: Use the `->filterFormSchema()` method to define your filter form
 2. **Apply Filters**: Use the `->applyFiltersUsing()` method to apply the filters to your kanban query
+3. **Filter Indicators**: user the `->enableFilterIndicator()` method to show active filters on the kanban board
 
 ## Basic Example
 
@@ -21,6 +22,7 @@ public function kanban(Kanban $kanban): Kanban
     return $kanban
         ->model(Task::class)
         ->statusField('status')
+        ->enableFilterIndicator()
         ->searchableFields(['title', 'description'])
         ->filterFormSchema([
             Select::make('priority')
