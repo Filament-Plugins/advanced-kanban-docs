@@ -666,27 +666,25 @@ Notes:
 
 #### Create Action
 ```php
-use Asmit\AdvancedKanban\RecordAction\EditAction;
+use Asmit\AdvancedKanban\RecordAction\CreateAction;
 
-EditAction::make('edit')
-   ->model(Task::class)
+CreateAction::make('create')
    ->schema([
        // Component schema here
     ])
 ```
 
-**Edit Action**
+#### Edit Action
 ```php
 use Asmit\AdvancedKanban\RecordAction\EditAction;
 
 EditAction::make('edit')
-   ->model(Task::class)
    ->schema([
        // Component schema here
     ])
 ```
 
-**Delete Action**
+#### Delete Action
 ```php
 use Asmit\AdvancedKanban\RecordAction\DeleteAction;
 
@@ -780,12 +778,11 @@ public function kanban(Kanban $kanban): Kanban
 
 ### Column Header Actions
 
-**Create Action**
+### Create Action
 ```php
 use Asmit\AdvancedKanban\Actions\CreateAction;
 
 CreateAction::make()
-    ->model(Task::class)
     ->schema(function(array $arguments): array {
         return $this->taskForm($arguments['status']);
     })
