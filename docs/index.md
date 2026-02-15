@@ -3,32 +3,81 @@
 layout: home
 
 hero:
-  name: "Laravel Plugins"
-  text: ""
-  tagline: A collection of powerful and flexible plugins for FilamentPhp
+  name: "Advanced Kanban"
+  text: "for Filament PHP"
+  tagline: "Transform your workflow with a powerful drag-and-drop Kanban board. Built for Filament 4.x & 5.x"
   actions:
     - theme: brand
-      text: View All Plugins
-      link: /filament/
+      text: 💎 Buy Now - Premium License
+      link: https://checkout.anystack.sh/filament-advanced-kanban
     - theme: alt
-      text: Get Started
+      text: 🎯 View Live Demo
+      link: https://kanban-demo.laravelplugins.com/admin/kanban-task
+    - theme: alt
+      text: 📚 Get Started →
       link: /filament/advanced-kanban/installation
-  
 
 features:
-  - title: Advanced Kanban
-    details: A powerful and flexible premium Kanban board plugin with drag & drop, workflow transitions, and advanced filtering
-    link: /filament/advanced-kanban/
-    icon: 🗂️
-  - title: Filament Mention
-    details: Enhanced mention functionality for Filament forms with user suggestions and notifications
-    link: https://filamentphp.com/plugins/asmit-nepali-mention
-    icon: 💬
-  - title: Filament Upload
-    details: Advanced file upload handling for Filament with drag & drop, progress bars, and file management
-    link: https://filamentphp.com/plugins/asmit-nepali-upload
-    icon: 📁
-  - title: Column Resized
-    details: Resizable columns for Filament tables with persistent sizing and responsive design
-    link: https://filamentphp.com/plugins/asmit-nepali-resized-column
-    icon: 📏
+  - icon: 🎯
+    title: Drag & Drop Interface
+    details: Intuitive drag-and-drop functionality for moving records between columns with smooth animations and visual feedback
+    
+  - icon: 🔄
+    title: Workflow Transitions
+    details: Define allowed status transitions to control record movement and enforce your business rules
+    
+  - icon: 🔍
+    title: Advanced Search & Filters
+    details: Real-time search across multiple fields with custom filter forms and tab-based filtering
+    
+  - icon: 📊
+    title: Customizable Columns
+    details: Colors, icons, labels, and descriptions for columns. Lock cards and control column behavior
+    
+  - icon: ⚡
+    title: High Performance
+    details: Efficient queries with caching, lazy loading, and pagination support for large datasets
+    
+  - icon: 🎨
+    title: Custom Components
+    details: Create custom card components with Vue.js for rich content display and interactions
+    
+  - icon: 🔐
+    title: Record Locking
+    details: Prevent specific records from being moved based on your custom business logic
+    
+  - icon: 🌍
+    title: Multilanguage Support
+    details: Full translation support via Filament's translation system for international teams
+    
+  - icon: 🎭
+    title: Custom Actions
+    details: Header, record, and column header actions to extend functionality
+    
+  - icon: 🔗
+    title: Relational Records
+    details: Manage related records with MRR (Manage Related Records) Kanban setup
+    
+  - icon: 📱
+    title: Responsive Design
+    details: Works seamlessly on desktop, tablet, and mobile devices
+    
+  - icon: 💎
+    title: Premium Support
+    details: Dedicated support with priority bug fixes and feature requests
+---
+
+<style>
+.VPFeature {
+  transition: all 0.3s ease;
+}
+
+.VPFeature:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.1);
+}
+
+.dark .VPFeature:hover {
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.3);
+}
+</style>

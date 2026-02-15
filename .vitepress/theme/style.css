@@ -43,6 +43,7 @@
  *   in custom container, badges, etc.
  * -------------------------------------------------------------------------- */
  @import url('https://fonts.googleapis.com/css2?family=Sora:wght@100..800&display=swap');
+ @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
 
 :root {
   --vp-c-default-1: var(--vp-c-gray-1);
@@ -50,10 +51,10 @@
   --vp-c-default-3: var(--vp-c-gray-3);
   --vp-c-default-soft: var(--vp-c-gray-soft);
 
-  --vp-c-brand-1: var(--vp-c-indigo-1);
-  --vp-c-brand-2: var(--vp-c-indigo-2);
-  --vp-c-brand-3: var(--vp-c-indigo-3);
-  --vp-c-brand-soft: var(--vp-c-indigo-soft);
+  --vp-c-brand-1: #3b82f6;
+  --vp-c-brand-2: #2563eb;
+  --vp-c-brand-3: #1d4ed8;
+  --vp-c-brand-soft: rgba(59, 130, 246, 0.14);
 
   --vp-c-tip-1: var(--vp-c-brand-1);
   --vp-c-tip-2: var(--vp-c-brand-2);
@@ -70,7 +71,8 @@
   --vp-c-danger-3: var(--vp-c-red-3);
   --vp-c-danger-soft: var(--vp-c-red-soft);
 
-  --vp-font-family-base: 'Sora';
+  --vp-font-family-base: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+  --vp-font-family-mono: 'Fira Code', 'Courier New', monospace;
 }
 
 /**
@@ -97,14 +99,14 @@
   --vp-home-hero-name-color: transparent;
   --vp-home-hero-name-background: -webkit-linear-gradient(
     120deg,
-    #6e56cd 30%,
-    #5672cd
+    #3b82f6 30%,
+    #8b5cf6
   );
 
   --vp-home-hero-image-background-image: linear-gradient(
     -45deg,
-    #6e56cd 50%,
-    #5672cd 50%
+    #3b82f6 50%,
+    #8b5cf6 50%
   );
   --vp-home-hero-image-filter: blur(44px);
 }
@@ -140,9 +142,165 @@
   --docsearch-primary-color: var(--vp-c-brand-1) !important;
 }
 
-
-
-/* Customization */
+/* Custom Styles */
 .VPImage {
   min-height: 2rem;
+}
+
+/* Premium Hero Buttons */
+.VPHero .VPButton {
+  font-weight: 600;
+  padding: 12px 32px;
+  font-size: 16px;
+  border-radius: 12px;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  position: relative;
+}
+
+.VPHero .VPButton.brand {
+  background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
+  border: 2px solid transparent;
+}
+
+.VPHero .VPButton.brand:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 24px rgba(59, 130, 246, 0.4);
+  background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%);
+}
+
+.VPHero .VPButton.alt {
+  background: var(--vp-c-bg-soft);
+  border: 2px solid var(--vp-c-divider);
+  color: var(--vp-c-text-1);
+}
+
+.VPHero .VPButton.alt:hover {
+  transform: translateY(-2px);
+  border-color: var(--vp-c-brand-1);
+  background: var(--vp-c-bg);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+}
+
+.dark .VPHero .VPButton {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+.dark .VPHero .VPButton.brand:hover {
+  box-shadow: 0 12px 24px rgba(59, 130, 246, 0.3);
+}
+
+.dark .VPHero .VPButton.alt:hover {
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.4);
+}
+
+/* Hero Actions Spacing */
+.VPHero .actions {
+  gap: 16px;
+}
+
+@media (max-width: 768px) {
+  .VPHero .VPButton {
+    width: 100%;
+    justify-content: center;
+  }
+}
+
+/* Sidebar improvements */
+.VPSidebarItem.level-0 .text {
+  font-weight: 600;
+}
+
+.VPSidebarItem.is-active .indicator {
+  background-color: var(--vp-c-brand-1);
+}
+
+/* Code block improvements */
+div[class*='language-'] {
+  border-radius: 8px;
+  margin: 16px 0;
+}
+
+div[class*='language-']:before {
+  font-weight: 600;
+}
+
+/* Table improvements */
+.vp-doc table {
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.vp-doc th {
+  background-color: var(--vp-c-bg-soft);
+  font-weight: 600;
+}
+
+/* Link improvements */
+.vp-doc a {
+  font-weight: 500;
+  text-decoration-style: dotted;
+}
+
+.vp-doc a:hover {
+  text-decoration-style: solid;
+}
+
+/* Custom container improvements */
+.custom-block {
+  border-radius: 8px;
+  border-left-width: 4px;
+}
+
+/* Badge styles */
+.badge {
+  display: inline-block;
+  padding: 2px 8px;
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 1.5;
+  border-radius: 4px;
+  background-color: var(--vp-c-brand-soft);
+  color: var(--vp-c-brand-1);
+}
+
+.badge.success {
+  background-color: rgba(16, 185, 129, 0.14);
+  color: #10b981;
+}
+
+.badge.warning {
+  background-color: rgba(245, 158, 11, 0.14);
+  color: #f59e0b;
+}
+
+.badge.danger {
+  background-color: rgba(239, 68, 68, 0.14);
+  color: #ef4444;
+}
+
+/* Navigation improvements */
+.VPNavBar {
+  backdrop-filter: blur(10px);
+}
+
+/* Search improvements */
+.VPNavBarSearch {
+  padding-left: 12px;
+}
+
+/* Footer improvements */
+.VPFooter {
+  border-top: 1px solid var(--vp-c-divider);
+}
+
+/* Responsive improvements */
+@media (max-width: 768px) {
+  .vp-doc h1 {
+    font-size: 32px;
+  }
+  
+  .vp-doc h2 {
+    font-size: 24px;
+  }
 }
