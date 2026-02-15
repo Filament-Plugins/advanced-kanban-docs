@@ -1,6 +1,6 @@
 # Advanced Kanban - Complete Documentation
 
-A comprehensive guide to the Advanced Kanban plugin for Filament 4.x
+A comprehensive guide to the Advanced Kanban plugin for Filament 4.x and 5.x
 
 ## Live Demo
 Try the [Live Demo](https://kanban-demo.laravelplugins.com/admin/kanban-task) to explore the features of Advanced Kanban.
@@ -33,7 +33,6 @@ Try the [Live Demo](https://kanban-demo.laravelplugins.com/admin/kanban-task) to
 
 4. [Core Concepts](#core-concepts)
    - [Kanban Board Structure](#kanban-board-structure)
-   - [Basic Configuration](#basic-configuration)
    - [Common Configuration Options](#common-configuration-options)
 
 5. [Configuration](#configuration)
@@ -98,6 +97,7 @@ Advanced Kanban is a premium [Filament PHP](https://filamentphp.com) plugin that
 - **Column Customization**: Colors, icons, labels, and descriptions for columns
 - **Record Locking**: Prevent specific records from being moved
 - **Performance Optimized**: Efficient queries with caching and lazy loading
+- **Multilanguage Support**: Full translation support via Filament's translation system
 - **Priority Support**: Dedicated support for enterprise customers
 
 ### When to Use Advanced Kanban
@@ -115,7 +115,7 @@ Advanced Kanban is perfect for:
 #### System Requirements
 - **PHP**: 8.2 or higher
 - **Laravel**: 11.x or higher
-- **Filament**: 4.x
+- **Filament**: 4.x | 5.x (Latest)
 
 ---
 
@@ -297,24 +297,9 @@ A kanban board consists of:
 - **Actions**: Interactive elements for performing operations
 - **Search & Filters**: Tools for finding and filtering records
 
-### Basic Configuration
+### Common Configuration Options
 
-Every kanban board requires:
-
-```php
-public function kanban(Kanban $kanban): Kanban
-{
-    return $kanban
-        ->model(YourModel::class)        // The model to display
-        ->statusField('status')          // The status field name
-        ->columns([                      // Define your columns
-            KanbanColumn::make('todo')->label('To Do'),
-            KanbanColumn::make('in_progress')->label('In Progress'),
-            KanbanColumn::make('completed')->label('Completed'),
-        ]);
-}
-```
----
+Additional configuration methods available:
 
 ## Configuration
 
@@ -778,7 +763,10 @@ public function kanban(Kanban $kanban): Kanban
 
 ### Column Header Actions
 
-### Create Action
+Column header actions allow you to perform operations on a per-column basis. The most common use case is adding a "Create" button to each column that pre-fills the status field.
+
+#### Adding Create Action to Column Headers
+
 ```php
 use Asmit\AdvancedKanban\Actions\CreateAction;
 
